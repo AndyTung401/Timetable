@@ -418,11 +418,10 @@ struct ContentView: View {
                     Text("22")
                         .font(.title)
                         .bold()
-                        .offset(x:-1, y:3)
+                        .offset(x:0, y:2)
                     Text("學分")
                 }
                 .font(.title3)
-                .bold()
             }
             .padding()
         }
