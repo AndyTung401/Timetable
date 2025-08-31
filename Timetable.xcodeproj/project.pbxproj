@@ -7,19 +7,32 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		CB6132662E64433100BADA98 /* Timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6132872E64835000BADA98 /* Timetable-Andy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timetable-Andy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6132972E6483EC00BADA98 /* Timetable-Vivian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timetable-Vivian.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CB6132682E64433100BADA98 /* Timetable */ = {
+		CB6132882E64835000BADA98 /* Timetable-Andy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Timetable;
+			path = "Timetable-Andy";
+			sourceTree = "<group>";
+		};
+		CB6132982E6483EC00BADA98 /* Timetable-Vivian */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Timetable-Vivian";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CB6132632E64433100BADA98 /* Frameworks */ = {
+		CB6132842E64835000BADA98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6132942E6483EC00BADA98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,7 +45,8 @@
 		CB61325D2E64433100BADA98 = {
 			isa = PBXGroup;
 			children = (
-				CB6132682E64433100BADA98 /* Timetable */,
+				CB6132882E64835000BADA98 /* Timetable-Andy */,
+				CB6132982E6483EC00BADA98 /* Timetable-Vivian */,
 				CB6132672E64433100BADA98 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +54,8 @@
 		CB6132672E64433100BADA98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB6132662E64433100BADA98 /* Timetable.app */,
+				CB6132872E64835000BADA98 /* Timetable-Andy.app */,
+				CB6132972E6483EC00BADA98 /* Timetable-Vivian.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,26 +63,48 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB6132652E64433100BADA98 /* Timetable */ = {
+		CB6132862E64835000BADA98 /* Timetable-Andy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB6132722E64433400BADA98 /* Build configuration list for PBXNativeTarget "Timetable" */;
+			buildConfigurationList = CB6132902E64835300BADA98 /* Build configuration list for PBXNativeTarget "Timetable-Andy" */;
 			buildPhases = (
-				CB6132622E64433100BADA98 /* Sources */,
-				CB6132632E64433100BADA98 /* Frameworks */,
-				CB6132642E64433100BADA98 /* Resources */,
+				CB6132832E64835000BADA98 /* Sources */,
+				CB6132842E64835000BADA98 /* Frameworks */,
+				CB6132852E64835000BADA98 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CB6132682E64433100BADA98 /* Timetable */,
+				CB6132882E64835000BADA98 /* Timetable-Andy */,
 			);
-			name = Timetable;
+			name = "Timetable-Andy";
 			packageProductDependencies = (
 			);
-			productName = Timetable;
-			productReference = CB6132662E64433100BADA98 /* Timetable.app */;
+			productName = "Timetable-Andy";
+			productReference = CB6132872E64835000BADA98 /* Timetable-Andy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB6132962E6483EC00BADA98 /* Timetable-Vivian */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6132A02E6483EF00BADA98 /* Build configuration list for PBXNativeTarget "Timetable-Vivian" */;
+			buildPhases = (
+				CB6132932E6483EC00BADA98 /* Sources */,
+				CB6132942E6483EC00BADA98 /* Frameworks */,
+				CB6132952E6483EC00BADA98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CB6132982E6483EC00BADA98 /* Timetable-Vivian */,
+			);
+			name = "Timetable-Vivian";
+			packageProductDependencies = (
+			);
+			productName = "Timetable-Vivian";
+			productReference = CB6132972E6483EC00BADA98 /* Timetable-Vivian.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -80,7 +117,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					CB6132652E64433100BADA98 = {
+					CB6132862E64835000BADA98 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					CB6132962E6483EC00BADA98 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -99,13 +139,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB6132652E64433100BADA98 /* Timetable */,
+				CB6132862E64835000BADA98 /* Timetable-Andy */,
+				CB6132962E6483EC00BADA98 /* Timetable-Vivian */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CB6132642E64433100BADA98 /* Resources */ = {
+		CB6132852E64835000BADA98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6132952E6483EC00BADA98 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +163,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CB6132622E64433100BADA98 /* Sources */ = {
+		CB6132832E64835000BADA98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6132932E6483EC00BADA98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,12 +300,12 @@
 			};
 			name = Release;
 		};
-		CB6132732E64433400BADA98 /* Debug */ = {
+		CB6132912E64835300BADA98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Timetable/Timetable.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Timetable-Andy/Timetable_Andy.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -264,7 +319,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndyTung.Timetable;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AndyTung.Timetable-Andy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -272,12 +327,12 @@
 			};
 			name = Debug;
 		};
-		CB6132742E64433400BADA98 /* Release */ = {
+		CB6132922E64835300BADA98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Timetable/Timetable.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Timetable-Andy/Timetable_Andy.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -291,7 +346,61 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndyTung.Timetable;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AndyTung.Timetable-Andy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CB6132A12E6483EF00BADA98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Timetable-Vivian/Timetable_Vivian.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TN62Y7N52Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AndyTung.Timetable-Vivian";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CB6132A22E6483EF00BADA98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Timetable-Vivian/Timetable_Vivian.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TN62Y7N52Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AndyTung.Timetable-Vivian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -311,11 +420,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB6132722E64433400BADA98 /* Build configuration list for PBXNativeTarget "Timetable" */ = {
+		CB6132902E64835300BADA98 /* Build configuration list for PBXNativeTarget "Timetable-Andy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CB6132732E64433400BADA98 /* Debug */,
-				CB6132742E64433400BADA98 /* Release */,
+				CB6132912E64835300BADA98 /* Debug */,
+				CB6132922E64835300BADA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6132A02E6483EF00BADA98 /* Build configuration list for PBXNativeTarget "Timetable-Vivian" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6132A12E6483EF00BADA98 /* Debug */,
+				CB6132A22E6483EF00BADA98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
