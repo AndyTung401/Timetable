@@ -12,6 +12,9 @@ struct TimetableApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(.white)
+                .navigationTitle("大一上課表")
         }
+        .windowResizability(.automatic)
     }
 }
