@@ -75,7 +75,7 @@ struct CellView: View {
 }
 
 struct ContentView: View {
-    var cellWidth: Double = 150
+    var cellWidth: Double = 160
     @Binding var largeLayout: Bool
     
     var body: some View {
@@ -287,7 +287,7 @@ struct ContentView: View {
                         Spacer()
                         CellView(largeLayout: $largeLayout, title: "新生講座 - 活出精彩", shortTitle: "新講-活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
                         CellView(largeLayout: $largeLayout, title: "計算機程式", shortTitle: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯", place: "電二229", teacher: "江介宏", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -309,7 +309,7 @@ struct ContentView: View {
                         Spacer()
                         CellView(largeLayout: $largeLayout, title: "新生講座 - 活出精彩", shortTitle: "新講-活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
                         CellView(largeLayout: $largeLayout, title: "計算機程式", shortTitle: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯", place: "電二229", teacher: "江介宏", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
