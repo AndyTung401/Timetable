@@ -150,7 +150,7 @@ struct ContentView: View {
                     Group {
                         CellView(title: "英文（一）", place: "S302", teacher: "", category: .compulsory)
                         CellView(title: "線性代數（一）", place: "E301", teacher: "", category: .compulsory)
-                        CellView(title: "大學入門", place: "B103", teacher: "", category: .elective)
+                        CellView(title: "大學入門", place: "B103", teacher: "", category: .liberal)
                         CellView(title: "微積分探索（一）", place: "S502", teacher: "", category: .compulsory)
                         CellView(title: "數學導論", place: "S503", teacher: "", category: .compulsory)
                     }
@@ -172,7 +172,7 @@ struct ContentView: View {
                     Group {
                         CellView(title: "英文（一）", place: "S302", teacher: "", category: .compulsory)
                         CellView(title: "線性代數（一）", place: "E301", teacher: "", category: .compulsory)
-                        CellView(title: "大學入門", place: "B103", teacher: "", category: .elective)
+                        CellView(title: "大學入門", place: "B103", teacher: "", category: .liberal)
                         CellView(title: "微積分探索（一）", place: "S502", teacher: "", category: .compulsory)
                         CellView(title: "數學導論", place: "S503", teacher: "", category: .compulsory)
                     }
@@ -214,7 +214,7 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .compulsory)
+                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .elective)
                         CellView(title: "微積分甲", place: "S502", teacher: "", category: .compulsory)
                         CellView(title: "線性代數（一）", place: "E301", teacher: "", category: .compulsory)
                         CellView(title: "基礎物理", place: "S202", teacher: "", category: .compulsory)
@@ -236,7 +236,7 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .compulsory)
+                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .elective)
                         CellView(title: "微積分甲", place: "S502", teacher: "", category: .compulsory)
                         CellView(title: "線性代數（一）", place: "E301", teacher: "", category: .compulsory)
                         CellView(title: "基礎物理", place: "S202", teacher: "", category: .compulsory)
@@ -258,7 +258,7 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .compulsory)
+                        CellView(title: "電子計算機概論", place: "S401", teacher: "", category: .elective)
                         Spacer()
                         CellView(title: "體育（飛盤運動）", place: "操場二", teacher: "", category: .required)
                         CellView(title: "基礎物理", place: "S202", teacher: "", category: .compulsory)
@@ -327,7 +327,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "現代公民與法律", place: "誠104", teacher: "", category: .elective)
+                        CellView(title: "現代公民與法律", place: "誠104", teacher: "", category: .liberal)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -349,7 +349,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "現代公民與法律", place: "誠104", teacher: "", category: .elective)
+                        CellView(title: "現代公民與法律", place: "誠104", teacher: "", category: .liberal)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -415,7 +415,7 @@ struct ContentView: View {
                 
                 HStack(alignment: .bottom){
                     Text("總計")
-                    Text("22")
+                    Text("28")
                         .font(.title)
                         .bold()
                         .offset(x:0, y:2)

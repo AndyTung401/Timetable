@@ -28,30 +28,55 @@ enum Category: String {
 }
 
 struct CellView: View {
+    @Binding var largeLayout: Bool
     var title: String
+    var shortTitle: String
     var place: String
     var teacher: String
     var category: Category
     var body: some View {
-        HStack {
-            Capsule()
-                .foregroundStyle(category.color())
-                .frame(width: 5, height: 50)
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.title3)
-                    .bold()
-                Text(teacher)
-                    .font(.callout)
-                    .foregroundStyle(.gray)
-                Text(place)
+        if largeLayout {
+            HStack {
+                Capsule()
+                    .foregroundStyle(category.color())
+                    .frame(width: 5, height: 50)
+                VStack(alignment: .leading) {
+                    Text(shortTitle)
+                        .font(.title)
+                        .bold()
+                    HStack (alignment: .bottom) {
+                        Text(teacher)
+                            .foregroundStyle(.gray)
+                        Text(place)
+                            .font(.title3)
+                    }
+                }
             }
+            .frame(height: 50)
+        } else {
+            HStack {
+                Capsule()
+                    .foregroundStyle(category.color())
+                    .frame(width: 5, height: 50)
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .font(.title3)
+                        .bold()
+                    Text(teacher)
+                        .font(.callout)
+                        .foregroundStyle(.gray)
+                    Text(place)
+                }
+            }
+            .frame(height: 50)
         }
+        
     }
 }
 
 struct ContentView: View {
-    private var cellWidth: Double = 150
+    var cellWidth: Double = 150
+    @Binding var largeLayout: Bool
     
     var body: some View {
         VStack {
@@ -73,6 +98,7 @@ struct ContentView: View {
                 }
             }
             .padding()
+            .opacity(largeLayout ? 0 : 1)
             
             Grid {
                 GridRow {
@@ -105,7 +131,7 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
+                        CellView(largeLayout: $largeLayout, title: "健康體適能", shortTitle: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
                         Spacer()
                         Spacer()
                     }
@@ -128,7 +154,7 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
+                        CellView(largeLayout: $largeLayout, title: "健康體適能", shortTitle: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
                         Spacer()
                         Spacer()
                     }
@@ -148,11 +174,11 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
+                        CellView(largeLayout: $largeLayout, title: "生物科學通論", shortTitle: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "普通物理學甲上", shortTitle: "普物甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
                         Spacer()
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "普通物理學甲上", shortTitle: "普物甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
+                        CellView(largeLayout: $largeLayout, title: "生物科學通論", shortTitle: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第3節
@@ -170,11 +196,11 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
+                        CellView(largeLayout: $largeLayout, title: "生物科學通論", shortTitle: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "普通物理學甲上", shortTitle: "普物甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
                         Spacer()
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "普通物理學甲上", shortTitle: "普物甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
+                        CellView(largeLayout: $largeLayout, title: "生物科學通論", shortTitle: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第4節
@@ -216,9 +242,9 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "微積分1&2", shortTitle: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "微積分1&2", shortTitle: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第6節
@@ -238,9 +264,9 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "微積分1&2", shortTitle: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯", place: "電二229", teacher: "江介宏", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "微積分1&2", shortTitle: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第7節
@@ -259,9 +285,9 @@ struct ContentView: View {
                     }
                     Group {
                         Spacer()
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 活出精彩", shortTitle: "新講-活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "計算機程式", shortTitle: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯", place: "電二229", teacher: "江介宏", category: .required)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -281,9 +307,9 @@ struct ContentView: View {
                     }
                     Group {
                         Spacer()
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 活出精彩", shortTitle: "新講-活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "計算機程式", shortTitle: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "交換電路與邏輯設計", shortTitle: "交電與邏輯", place: "電二229", teacher: "江介宏", category: .required)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -302,9 +328,9 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "微積分1&2", shortTitle: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 活出精彩", shortTitle: "新講-活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "計算機程式", shortTitle: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
                         Spacer()
                         Spacer()
                     }
@@ -327,7 +353,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 能力養成", shortTitle: "新講-能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -349,7 +375,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 能力養成", shortTitle: "新講-能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -371,7 +397,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        CellView(largeLayout: $largeLayout, title: "新生講座 - 能力養成", shortTitle: "新講-能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -424,18 +450,22 @@ struct ContentView: View {
                 .font(.title3)
             }
             .padding()
+            .opacity(largeLayout ? 0 : 1)
         }
         .padding()
-        .frame(width: 920, height: 1150)
+        .frame(width: 960, height: 1200)
         .background(.white)
         .navigationTitle("大一上課表")
+        .toolbar {
+            Toggle("Large Layout", isOn: $largeLayout)
+        }
     }
 }
 
-#Preview("ContentView") {
-    ContentView()
-}
-
-#Preview("CellView") {
-    CellView(title: "微積分1", place: "新102", teacher: "蔡雅如", category: .required)
-}
+//#Preview("ContentView") {
+//    ContentView()
+//}
+//
+//#Preview("CellView") {
+//    CellView(largeLayout: .constant(false), title: "微積分1", shortTitle: "微積分1", place: "新102", teacher: "蔡雅如", category: .required)
+//}

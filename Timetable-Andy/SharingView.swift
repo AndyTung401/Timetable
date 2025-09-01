@@ -83,9 +83,10 @@ func pdfToImage(
 
 struct SharingView: View {
     var size: Double = 2500
+    @State var largeLayout: Bool = false
     
     var body: some View {
-        ContentView()
+        ContentView(largeLayout: $largeLayout)
             .toolbar {
 //                ShareLink(item: renderPDF())
                 ShareLink(item: pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: "output.png"))!)
@@ -95,7 +96,7 @@ struct SharingView: View {
     /// 將 SwiftUI View 轉成 PDF，回傳檔案 URL
     private func renderPDF() -> URL {
         let renderer = ImageRenderer(content:
-            ContentView()
+                                        largeLayout ? ContentView(largeLayout: .constant(true)) : ContentView(largeLayout: .constant(false))
         )
 
         let url = URL.documentsDirectory.appending(path: "output.pdf")
