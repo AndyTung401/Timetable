@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Timetable
 //
-//  Created by 董承威 on 2025/8/31.
+//  Created by 董承威 on 2025/9/1.
 //
 
 import SwiftUI
@@ -105,7 +105,7 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
+                        Spacer()
                         Spacer()
                         Spacer()
                     }
@@ -128,7 +128,7 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "健康體適能", place: "人工草皮球場", teacher: "梁澤敬", category: .compulsory)
+                        Spacer()
                         Spacer()
                         Spacer()
                     }
@@ -148,11 +148,11 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
                         Spacer()
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第3節
@@ -170,11 +170,11 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
                         Spacer()
-                        CellView(title: "普通物理學甲上", place: "博雅202", teacher: "王名儒", category: .liberal)
-                        CellView(title: "生物科學通論", place: "明達231", teacher: "莊曜宇", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第4節
@@ -216,9 +216,9 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        Spacer()
+                        Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第6節
@@ -238,9 +238,9 @@ struct ContentView: View {
                     Group {
                         Spacer()
                         Spacer()
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
                 } // 第7節
@@ -259,9 +259,9 @@ struct ContentView: View {
                     }
                     Group {
                         Spacer()
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -281,9 +281,9 @@ struct ContentView: View {
                     }
                     Group {
                         Spacer()
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
-                        CellView(title: "交換電路與邏輯設計", place: "電二229", teacher: "江介宏", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -302,9 +302,9 @@ struct ContentView: View {
                             .foregroundStyle(.gray)
                     }
                     Group {
-                        CellView(title: "微積分1&2", place: "新102", teacher: "蔡雅如", category: .required)
-                        CellView(title: "新生講座 - 活出精彩", place: "博雅102", teacher: "孫效智", category: .elective)
-                        CellView(title: "計算機程式", place: "學新館416", teacher: "謝宏昀", category: .required)
+                        Spacer()
+                        Spacer()
+                        Spacer()
                         Spacer()
                         Spacer()
                     }
@@ -327,7 +327,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        Spacer()
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -349,7 +349,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        Spacer()
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)
@@ -371,7 +371,7 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Spacer()
-                        CellView(title: "新生講座 - 能力養成", place: "博雅102", teacher: "陳林祈", category: .elective)
+                        Spacer()
                         Spacer()
                     }
                     .frame(width: cellWidth, alignment: .leading)

@@ -1,8 +1,8 @@
 //
 //  SharingView.swift
-//  Timetable-Andy
+//  Timetable
 //
-//  Created by 董承威 on 2025/8/31.
+//  Created by 董承威 on 2025/9/1.
 //
 
 import SwiftUI
@@ -82,12 +82,17 @@ func pdfToImage(
 }
 
 struct SharingView: View {
-    var size: Double = 2500
+    @State var size: Double = 2500
     
     var body: some View {
         ContentView()
             .toolbar {
-//                ShareLink(item: renderPDF())
+                HStack {
+                    Text("Resolution (px): ")
+                    TextField("解析度（最長邊）", value: $size, format: .number)
+                        .frame(width: 50)
+                }
+
                 ShareLink(item: pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: "output.png"))!)
             }
     }
@@ -121,3 +126,4 @@ struct SharingView: View {
 #Preview {
     SharingView()
 }
+

@@ -1,8 +1,8 @@
 //
 //  SharingView.swift
-//  Timetable-Andy
+//  Timetable
 //
-//  Created by 董承威 on 2025/8/31.
+//  Created by 董承威 on 2025/9/1.
 //
 
 import SwiftUI
@@ -121,3 +121,4 @@ struct SharingView: View {
 #Preview {
     SharingView()
 }
+
