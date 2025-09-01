@@ -82,13 +82,18 @@ func pdfToImage(
 }
 
 struct SharingView: View {
-    var size: Double = 2500
+    @State var size: Double = 2500
     @State var largeLayout: Bool = false
     
     var body: some View {
         ContentView(largeLayout: $largeLayout)
             .toolbar {
-//                ShareLink(item: renderPDF())
+                HStack {
+                    Text("Resolution (px):")
+                    TextField("解析度（最長邊）", value: $size, format: .number)
+                        .frame(width: 50)
+                }
+                
                 ShareLink(item: pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: "output.png"))!)
             }
     }
