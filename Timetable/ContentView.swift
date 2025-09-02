@@ -60,13 +60,18 @@ struct CellView: View {
                     .frame(width: 5, height: 50)
                 VStack(alignment: .leading) {
                     Text(classData.shortTitle)
-                        .font(.title)
-                        .bold()
-                    HStack (alignment: .bottom) {
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                    HStack (alignment: .bottom, spacing: 0) {
                         Text(classData.teacher)
-                            .foregroundStyle(.gray)
-                        Text(classData.place)
                             .font(.title3)
+                            .foregroundStyle(.gray)
+                        Spacer(minLength: 0)
+                            .frame(maxWidth: 10)
+                            .layoutPriority(-1)
+                        Text(classData.place)
+                            .font(.title2)
+                            .fontWeight(.medium)
                     }
                 }
             }
@@ -93,7 +98,7 @@ struct CellView: View {
 }
 
 struct ContentView: View {
-    var cellWidth: Double = 160
+    var cellWidth: Double = 162
     @Binding var largeLayout: Bool
     
     var body: some View {
@@ -137,15 +142,37 @@ struct ContentView: View {
                 Divider()
                 
                 ForEach(timePeriods) { period in
-                    GridRow {
-                        VStack {
-                            Text(period.startTime)
-                                .foregroundStyle(.gray)
-                            Text(period.serial)
-                                .font(.title)
-                                .bold()
-                            Text(period.endTime)
-                                .foregroundStyle(.gray)
+                    GridRow(alignment: .center) {
+                        ZStack {
+                            if largeLayout {
+                                HStack {
+                                    Text(period.serial)
+                                        .fontWidth(.compressed)
+                                        .font(.system(size: 50))
+                                        .bold()
+                                        .foregroundStyle(.gray)
+                                    VStack(alignment: .center) {
+                                        Text(period.startTime)
+                                        Text(period.endTime)
+                                    }
+                                    .font(.title)
+                                    .fontWeight(.medium)
+                                }
+                                .frame(height: 59)
+                            } else {
+                                VStack {
+                                    Text(period.startTime)
+                                        .foregroundStyle(.gray)
+                                    Text(period.serial)
+                                        .font(.title)
+                                        .bold()
+                                    Text(period.endTime)
+                                        .foregroundStyle(.gray)
+                                }
+                                .frame(height: 59)
+                            }
+                            
+                            
                         }
                         
                         ForEach(Array(classDatas[period.index ].indices), id: \.self) { i in
@@ -210,7 +237,7 @@ struct ContentView: View {
             .opacity(largeLayout ? 0 : 1)
         }
         .padding()
-        .frame(width: 960, height: 1200)
+        .frame(width: 1000, height: 1250)
         .background(.white)
         .navigationTitle(basicInfo.windowTitle)
         .toolbar {
