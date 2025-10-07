@@ -9,7 +9,7 @@ import Foundation
 
 #if true
 
-let basicInfo: BasicInfo = BasicInfo(title: "國立台灣師範大學 114 學年度第 1 學期 上課時間表", topLeft: "", bottomLeft: "數學系 一年級", topRight: "學號：41440215S", bottomRight: "姓名：李宥嫺", credits: 28, windowTitle: "大一上課表")
+let basicInfo: BasicInfo = BasicInfo(title: "國立台灣師範大學 114 學年度第 1 學期 上課時間表", topLeft: "", bottomLeft: "數學系 一年級", topRight: "學號：41440215S", bottomRight: "姓名：李宥嫺", credits: 30, windowTitle: "大一上課表")
 
 let timePeriods: Array<TimePeriod> = [
     TimePeriod(index: 0, serial: "1", startTime: "08:10", endTime: "09:00"),
@@ -86,37 +86,37 @@ let classDatas: Array<Array<ClassData?>> = [
     ],
     [ // 9
         nil,
-        nil,
+        ClassData(title: "運算思維與程式設計", shortTitle: "運算思維", place: "理圖801", teacher: "張凌倩", category: .liberal),
         ClassData(title: "體育（飛盤運動）", shortTitle: "體育（飛盤）", place: "公館操場二", teacher: "黃正杰", category: .required),
         nil,
         nil,
     ],
     [ // 10
-        nil,
-        nil,
-        nil,
+        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
+        ClassData(title: "運算思維與程式設計", shortTitle: "運算思維", place: "理圖801", teacher: "張凌倩", category: .liberal),
+        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
         nil,
         nil,
     ],
     [ // A
+        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
         nil,
-        nil,
-        nil,
-        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥？", category: .liberal),
+        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
+        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥亘", category: .liberal),
         nil,
     ],
     [ // B
         nil,
         nil,
         nil,
-        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥？", category: .liberal),
+        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥亘", category: .liberal),
         nil,
     ],
     [ // C
         nil,
         nil,
         nil,
-        nil,
+        ClassData(title: "排球", shortTitle: "排球", place: "20:30~23:30", teacher: "", category: .other),
         nil,
     ],
 ]

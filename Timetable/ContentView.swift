@@ -12,6 +12,7 @@ enum Category: String {
     case required
     case elective
     case liberal
+    case other
     
     func color() -> Color {
         switch self {
@@ -23,6 +24,8 @@ enum Category: String {
             return .teal
         case .liberal:
             return .yellow
+        case .other:
+            return .green
         }
     }
 }

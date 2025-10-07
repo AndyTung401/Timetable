@@ -92,9 +92,10 @@ struct SharingView: View {
                     Text("Export Resolution (px):")
                     TextField("", value: $size, format: .number)
                         .frame(width: 50)
+                    ShareLink(item: pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: "output.png"))!)
                 }
+                .padding(.leading)
                 
-                ShareLink(item: pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: "output.png"))!)
             }
     }
     
