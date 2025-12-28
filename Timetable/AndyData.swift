@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if false
+#if true
 
 let basicInfo: BasicInfo = BasicInfo(title: "國立台灣大學 114 學年度第 1 學期 上課時間表", topLeft: "", bottomLeft: "電機工程學系 一年級", topRight: "學號：B14901179", bottomRight: "姓名：董承威", credits: 22, windowTitle: "大一上課表")
 

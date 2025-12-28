@@ -101,30 +101,34 @@ struct CellView: View {
 }
 
 struct ContentView: View {
+    var contentPadding: Double
+    var horizontalPadding: Double
+    var verticalPadding: Double
     var cellWidth: Double = 162
     @Binding var largeLayout: Bool
     
     var body: some View {
         VStack {
-            ZStack {
-                Text(basicInfo.title)
-                    .font(.largeTitle)
-                    .bold()
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(basicInfo.topLeft)
-                        Text(basicInfo.bottomLeft)
-                    }
-                    Spacer()
-                    VStack(alignment: .leading) {
-                        Text(basicInfo.topRight)
-                        Text(basicInfo.bottomRight)
+            if(!largeLayout){
+                ZStack {
+                    Text(basicInfo.title)
+                        .font(.largeTitle)
+                        .bold()
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(basicInfo.topLeft)
+                            Text(basicInfo.bottomLeft)
+                        }
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text(basicInfo.topRight)
+                            Text(basicInfo.bottomRight)
+                        }
                     }
                 }
+                .padding()
             }
-            .padding()
-            .opacity(largeLayout ? 0 : 1)
             
             Grid {
                 GridRow {
@@ -193,58 +197,61 @@ struct ContentView: View {
                 }
             }
             
-            HStack {
+            if(!largeLayout){
                 HStack {
-                    Label {
-                        Text("必帶")
-                    } icon: {
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(.gray)
+                    HStack {
+                        Label {
+                            Text("必帶")
+                        } icon: {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(.gray)
+                        }
+                        
+                        Label {
+                            Text("必修")
+                        } icon: {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(.blue)
+                        }
+                        
+                        Label {
+                            Text("通識")
+                        } icon: {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(.yellow)
+                        }
+                        
+                        Label {
+                            Text("選修")
+                        } icon: {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(.teal)
+                        }
                     }
                     
-                    Label {
-                        Text("必修")
-                    } icon: {
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(.blue)
-                    }
+                    Spacer()
                     
-                    Label {
-                        Text("通識")
-                    } icon: {
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(.yellow)
+                    HStack(alignment: .bottom){
+                        Text("總計")
+                        Text(String(basicInfo.credits))
+                            .font(.title)
+                            .bold()
+                            .offset(x:0, y:2)
+                        Text("學分")
                     }
-                    
-                    Label {
-                        Text("選修")
-                    } icon: {
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(.teal)
-                    }
+                    .font(.title3)
                 }
-                
-                Spacer()
-                
-                HStack(alignment: .bottom){
-                    Text("總計")
-                    Text(String(basicInfo.credits))
-                        .font(.title)
-                        .bold()
-                        .offset(x:0, y:2)
-                    Text("學分")
-                }
-                .font(.title3)
+                .padding()
             }
-            .padding()
-            .opacity(largeLayout ? 0 : 1)
         }
+        .padding(CGFloat(Int(contentPadding)))
+        .padding(.horizontal, CGFloat(Int(horizontalPadding)))
+        .padding(.vertical, CGFloat(Int(verticalPadding)))
         .padding()
-        .frame(width: 1000, height: 1250)
         .background(.white)
         .navigationTitle(basicInfo.windowTitle)
-        .toolbar {
-            Toggle("Large Layout", isOn: $largeLayout)
-        }
+        
     }
 }
+
+
