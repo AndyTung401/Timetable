@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1640"
+   LastUpgradeVersion = "2620"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB6132862E64835000BADA98"
-               BuildableName = "Timetable-Andy.app"
-               BlueprintName = "Timetable-Andy"
+               BlueprintIdentifier = "CB61333C2E65E28400BADA98"
+               BuildableName = "Timetable.app"
+               BlueprintName = "Timetable"
                ReferencedContainer = "container:Timetable.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB6132862E64835000BADA98"
-            BuildableName = "Timetable-Andy.app"
-            BlueprintName = "Timetable-Andy"
+            BlueprintIdentifier = "CB61333C2E65E28400BADA98"
+            BuildableName = "Timetable.app"
+            BlueprintName = "Timetable"
             ReferencedContainer = "container:Timetable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB6132862E64835000BADA98"
-            BuildableName = "Timetable-Andy.app"
-            BlueprintName = "Timetable-Andy"
+            BlueprintIdentifier = "CB61333C2E65E28400BADA98"
+            BuildableName = "Timetable.app"
+            BlueprintName = "Timetable"
             ReferencedContainer = "container:Timetable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

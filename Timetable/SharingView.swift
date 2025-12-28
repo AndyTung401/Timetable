@@ -26,18 +26,26 @@ func pdfToImage(
     targetSize: CGSize,
     outputURL: URL
 ) -> URL? {
+
     guard let pdfDoc = PDFDocument(url: pdfURL),
           let page = pdfDoc.page(at: 0) else {
         return nil
     }
-    
+
     let pdfRect = page.bounds(for: .mediaBox)
-    let scaleX = targetSize.width / pdfRect.width
-    let scaleY = targetSize.height / pdfRect.height
-    let scale = min(scaleX, scaleY)
-    let scaledSize = CGSize(width: pdfRect.width * scale,
-                            height: pdfRect.height * scale)
-    
+    let scale = min(
+        targetSize.width / pdfRect.width,
+        targetSize.height / pdfRect.height
+    )
+
+    let scaledSize = CGSize(
+        width: pdfRect.width * scale,
+        height: pdfRect.height * scale
+    )
+
+    #if os(macOS)
+
+    // ===== macOS（你原本的邏輯）=====
     guard let bitmapRep = NSBitmapImageRep(
         bitmapDataPlanes: nil,
         pixelsWide: Int(scaledSize.width),
@@ -53,52 +61,34 @@ func pdfToImage(
     let context = NSGraphicsContext(bitmapImageRep: bitmapRep)?.cgContext else {
         return nil
     }
-    
-    
-    // 白底
-    context.saveGState()
 
-    // === 第一步：旋轉 180° ===
-    context.translateBy(x: scaledSize.width, y: scaledSize.height)
-    context.rotate(by: .pi)   // 180 度
-
-    // === 第二步：左右翻轉 ===
-    context.translateBy(x: scaledSize.width, y: 0)
-    context.scaleBy(x: -1, y: 1)
-
-    // === 第三步：套 PDF 的縮放 ===
-    context.translateBy(x: 0, y: scaledSize.height)
-    context.scaleBy(x: scale, y: -scale)
-
+    context.scaleBy(x: scale, y: scale)
     page.draw(with: .mediaBox, to: context)
 
-    context.restoreGState()
-    
-    let fileManager = FileManager.default
-    let now = Date()
-
-    do {
-        try fileManager.setAttributes(
-            [
-                .creationDate: now,
-                .modificationDate: now
-            ],
-            ofItemAtPath: outputURL.path
-        )
-    } catch {
-        print("❌ 設定檔案時間失敗: \(error)")
-    }
-    
-    // 存成 PNG
     if let data = bitmapRep.representation(using: .png, properties: [:]) {
-        do {
-            try data.write(to: outputURL)
-            return outputURL
-        } catch {
-            print("❌ 寫檔失敗: \(error)")
-            return nil
-        }
+        try? data.write(to: outputURL)
+        return outputURL
     }
+
+    #else
+
+    // ===== iPad / iOS =====
+    let renderer = UIGraphicsImageRenderer(size: scaledSize)
+
+    let image = renderer.image { ctx in
+        let context = ctx.cgContext
+
+        context.scaleBy(x: scale, y: scale)
+        page.draw(with: .mediaBox, to: context)
+    }
+
+    if let data = image.pngData() {
+        try? data.write(to: outputURL)
+        return outputURL
+    }
+
+    #endif
+
     return nil
 }
 
@@ -124,10 +114,17 @@ struct SharingView: View {
                     .padding([.bottom, .horizontal], 30)
             }
             .scrollContentBackground(.hidden)
+            #if os(macOS)
             .background(
                 Color(nsColor: .underPageBackgroundColor)
                     .ignoresSafeArea()
             )
+            #else
+            .background(
+                Color(uiColor: .secondarySystemBackground)
+                    .ignoresSafeArea()
+            )
+            #endif
             .toolbar {
                 ToolbarItem {
                     Button {
@@ -138,6 +135,9 @@ struct SharingView: View {
                     .popover(isPresented: $showPreferencesPopover) {
                         Form {
                             HStack {
+                                #if os(iOS)
+                                Image(systemName: "arrow.left.and.right.square")
+                                #endif
                                 Slider(value: $horizontalPadding, in: 0...50, step: 5) {
                                     Label("Horizontal Padding ", systemImage: "arrow.left.and.right.square")
                                 }
@@ -149,6 +149,9 @@ struct SharingView: View {
                                     .monospacedDigit()
                             }
                             HStack {
+                                #if os(iOS)
+                                Image(systemName: "arrow.up.and.down.square")
+                                #endif
                                 Slider(value: $verticalPadding, in: 0...50, step: 5) {
                                     Label("Vertical Padding ", systemImage: "arrow.up.and.down.square")
                                 }
@@ -160,6 +163,9 @@ struct SharingView: View {
                                     .monospacedDigit()
                             }
                             HStack {
+                                #if os(iOS)
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                #endif
                                 Slider(value: $contentPadding, in: 0...50, step: 5) {
                                     Label("Content Padding ", systemImage: "arrow.down.left.and.arrow.up.right.square")
                                 }
@@ -175,6 +181,9 @@ struct SharingView: View {
                                 .toggleStyle(.switch)
                         }
                         .frame(width: 300)
+                        #if os(iOS)
+                        .frame( height: 500)
+                        #endif
                         .padding()
                     }
                 }
@@ -207,7 +216,9 @@ struct SharingView: View {
                         Button(role: .cancel) {
                             showExportSheet = false
                         }
+                        .buttonStyle(.bordered)
                         ShareLink(item: shareLinkHandler(exportType))
+                            .buttonStyle(.borderedProminent)
                     }
                 }
                 .padding()

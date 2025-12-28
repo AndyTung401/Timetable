@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Timetable-Andy.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
 		<key>Timetable-Vivian.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -16,6 +11,8 @@
 		</dict>
 		<key>Timetable.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
@@ -23,6 +20,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>CB6132862E64835000BADA98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB61333C2E65E28400BADA98</key>
 		<dict>
 			<key>primary</key>
 			<true/>
