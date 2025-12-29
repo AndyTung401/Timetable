@@ -9,15 +9,10 @@ import SwiftUI
 
 @main
 struct TimetableApp: App {
+
     var body: some Scene {
         WindowGroup {
-            SharingView()
-            //下一步：define custom size
-            #if os(macOS)
-                .dynamicTypeSize(.medium ... .medium)
-            #else
-                .dynamicTypeSize(.xSmall ... .xSmall)
-            #endif
+            ContentView()
         }
         .windowResizability(.contentSize)
     }

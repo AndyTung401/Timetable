@@ -1,257 +1,196 @@
 //
 //  ContentView.swift
-//  Timetable
+//  Timetable-Andy
 //
-//  Created by 董承威 on 2025/9/1.
+//  Created by 董承威 on 2025/8/31.
 //
 
 import SwiftUI
 
-enum Category: String {
-    case compulsory
-    case required
-    case elective
-    case liberal
-    case other
-    
-    func color() -> Color {
-        switch self {
-        case .compulsory:
-            return .gray
-        case .required:
-            return .blue
-        case .elective:
-            return .teal
-        case .liberal:
-            return .yellow
-        case .other:
-            return .green
-        }
-    }
-}
 
-struct BasicInfo {
-    var title: String
-    var topLeft: String
-    var bottomLeft: String
-    var topRight: String
-    var bottomRight: String
-    var credits: Int
-    var windowTitle: String
-}
-
-struct ClassData: Identifiable {
-    var id = UUID()
-    var title, shortTitle, place, teacher: String
-    var category: Category
-}
-
-struct TimePeriod: Identifiable {
-    var id = UUID()
-    var index: Int
-    var serial, startTime, endTime: String
-}
-
-struct CellView: View {
-    @Binding var largeLayout: Bool
-    var classData: ClassData
-    var body: some View {
-        if largeLayout {
-            HStack {
-                Capsule()
-                    .foregroundStyle(classData.category.color())
-                    .frame(width: 5, height: 50)
-                VStack(alignment: .leading) {
-                    Text(classData.shortTitle)
-                        .font(.largeTitle)
-                        .fontWeight(.semibold)
-                    HStack (alignment: .bottom, spacing: 0) {
-                        Text(classData.teacher)
-                            .font(.title3)
-                            .foregroundStyle(.gray)
-                        Spacer(minLength: 0)
-                            .frame(maxWidth: 10)
-                            .layoutPriority(-1)
-                        Text(classData.place)
-                            .font(.title2)
-                            .fontWeight(.medium)
-                    }
-                }
-            }
-            .frame(height: 50)
-        } else {
-            HStack {
-                Capsule()
-                    .foregroundStyle(classData.category.color())
-                    .frame(width: 5, height: 50)
-                VStack(alignment: .leading) {
-                    Text(classData.title)
-                        .font(.title3)
-                        .bold()
-                    Text(classData.teacher)
-                        .font(.callout)
-                        .foregroundStyle(.gray)
-                    Text(classData.place)
-                }
-            }
-            .frame(height: 50)
-        }
-        
-    }
-}
 
 struct ContentView: View {
-    var contentPadding: Double
-    var horizontalPadding: Double
-    var verticalPadding: Double
-    var cellWidth: Double = 162
-    @Binding var largeLayout: Bool
+    @Environment(\.colorScheme) private var colorScheme
+    
+    @State var size: Double = 2500
+    @State var largeLayout: Bool = false
+    @State var contentPadding: Double = 0
+    @State var horizontalPadding: Double = 0
+    @State var verticalPadding: Double = 0
+    @State var exportType = ExportType.png
+    @State var exportLargeLayout: Bool = false
+    @State var showExportSheet = false
+    @State var showPreferencesPopover: Bool = false
+    @State var pureBlack: Bool = false
     
     var body: some View {
-        VStack {
-            if(!largeLayout){
-                ZStack {
-                    Text(basicInfo.title)
-                        .font(.largeTitle)
-                        .bold()
-                    
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(basicInfo.topLeft)
-                            Text(basicInfo.bottomLeft)
-                        }
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text(basicInfo.topRight)
-                            Text(basicInfo.bottomRight)
-                        }
-                    }
-                }
-                .padding()
+        NavigationStack {
+            ScrollView([.horizontal, .vertical]) {
+                TableView(contentPadding: contentPadding, horizontalPadding: horizontalPadding, verticalPadding: verticalPadding, largeLayout: $largeLayout)
+                    .background(canvaColor(for: colorScheme, pureBlack: pureBlack))
+                    .navigationTitle(basicInfo.windowTitle)
+                    .padding([.bottom, .horizontal], 30)
             }
-            
-            Grid {
-                GridRow {
-                    Spacer()
-                        .frame(width: 75)
-                    Group {
-                        Text("一")
-                        Text("二")
-                        Text("三")
-                        Text("四")
-                        Text("五")
+            .defaultScrollAnchor(.zero)
+            .scrollContentBackground(.hidden)
+            .background(
+                Color(white: 0.15)
+                    .ignoresSafeArea()
+            )
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showPreferencesPopover.toggle()
+                    } label: {
+                        Image(systemName: "slider.horizontal.3")
                     }
-                    .font(.title3)
-                    .bold()
-                    .frame(width: cellWidth, alignment: .bottom)
-                } // 日期
-                
-                Divider()
-                
-                ForEach(timePeriods) { period in
-                    GridRow(alignment: .center) {
-                        ZStack {
-                            if largeLayout {
+                    .popover(isPresented: $showPreferencesPopover) {
+                        Form {
+                            Section("Padding") {
                                 HStack {
-                                    Text(period.serial)
-                                        .fontWidth(.compressed)
-                                        .font(.system(size: 50))
-                                        .bold()
-                                        .foregroundStyle(.gray)
-                                    VStack(alignment: .center) {
-                                        Text(period.startTime)
-                                        Text(period.endTime)
+#if os(iOS)
+                                    Image(systemName: "arrow.left.and.right.square")
+#endif
+                                    Slider(value: $horizontalPadding, in: 0...100, step: 5) {
+                                        Label("Horizontal Padding ", systemImage: "arrow.left.and.right.square")
                                     }
-                                    .font(.title)
-                                    .fontWeight(.medium)
+                                    ZStack {
+                                        Text("00")
+                                            .opacity(0)
+                                        Text(String(Int(horizontalPadding)))
+                                    }
+                                    .monospacedDigit()
                                 }
-                                .frame(height: 59)
-                            } else {
-                                VStack {
-                                    Text(period.startTime)
-                                        .foregroundStyle(.gray)
-                                    Text(period.serial)
-                                        .font(.title)
-                                        .bold()
-                                    Text(period.endTime)
-                                        .foregroundStyle(.gray)
+                                HStack {
+#if os(iOS)
+                                    Image(systemName: "arrow.up.and.down.square")
+#endif
+                                    Slider(value: $verticalPadding, in: 0...100, step: 5) {
+                                        Label("Vertical Padding ", systemImage: "arrow.up.and.down.square")
+                                    }
+                                    ZStack {
+                                        Text("00")
+                                            .opacity(0)
+                                        Text(String(Int(verticalPadding)))
+                                    }
+                                    .monospacedDigit()
                                 }
-                                .frame(height: 59)
+                                HStack {
+#if os(iOS)
+                                    Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+#endif
+                                    Slider(value: $contentPadding, in: 0...100, step: 5) {
+                                        Label("Content Padding ", systemImage: "arrow.down.left.and.arrow.up.right.square")
+                                    }
+                                    ZStack {
+                                        Text("00")
+                                            .opacity(0)
+                                        Text(String(Int(contentPadding)))
+                                    }
+                                    .monospacedDigit()
+                                }
                             }
                             
-                            
-                        }
-                        
-                        ForEach(Array(classDatas[period.index ].indices), id: \.self) { i in
-                            if let data = classDatas[period.index][i] {
-                                CellView(largeLayout: $largeLayout, classData: data)
-                            } else {
-                                Spacer()
+                            Section("Displays") {
+                                Toggle(isOn: $pureBlack) {
+                                    Label("Use Pure Black in Dark Mode ", systemImage: "moon.fill")
+                                }
+                                .toggleStyle(.switch)
+                                
+                                Toggle(isOn: $largeLayout) {
+                                    Label("Large Layout ", systemImage: "textformat.size")
+                                }
+                                .toggleStyle(.switch)
                             }
                         }
-                        .frame(width: cellWidth, alignment: .leading)
-
-                    } // 第1節
-                    
-                    Divider()
+                        .frame(width: 300)
+                        #if os(iOS)
+                        .frame( height: 500)
+                        #endif
+                        .padding()
+                    }
+                }
+                ToolbarSpacer(.fixed)
+                ToolbarItem {
+                    Button {
+                        exportLargeLayout = largeLayout
+                        showExportSheet = true
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
                 }
             }
-            
-            if(!largeLayout){
-                HStack {
+            .sheet(isPresented: $showExportSheet) {
+                VStack(spacing: 20) {
+                    Form {
+                        Picker(selection: $exportType) {
+                            Label("PNG", systemImage: "photo")
+                                .tag(ExportType.png)
+                            Label("PDF", systemImage: "text.document.fill")
+                                .tag(ExportType.pdf)
+                        } label: {
+                            Label("Format", systemImage: "document.fill")
+                        }
+                        .pickerStyle(.segmented)
+                        TextField("Resolution (shortest side in px)", value: $size, format: .number)
+                            .disabled(exportType == ExportType.pdf)
+                        
+                        Toggle("Export in Large Layout", isOn: $exportLargeLayout)
+                    }
                     HStack {
-                        Label {
-                            Text("必帶")
-                        } icon: {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(.gray)
+                        Button(role: .cancel) {
+                            showExportSheet = false
                         }
-                        
-                        Label {
-                            Text("必修")
-                        } icon: {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(.blue)
-                        }
-                        
-                        Label {
-                            Text("通識")
-                        } icon: {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(.yellow)
-                        }
-                        
-                        Label {
-                            Text("選修")
-                        } icon: {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(.teal)
-                        }
+                        .buttonStyle(.bordered)
+                        ShareLink(item: shareLinkHandler(exportType))
+                            .buttonStyle(.borderedProminent)
                     }
-                    
-                    Spacer()
-                    
-                    HStack(alignment: .bottom){
-                        Text("總計")
-                        Text(String(basicInfo.credits))
-                            .font(.title)
-                            .bold()
-                            .offset(x:0, y:2)
-                        Text("學分")
-                    }
-                    .font(.title3)
                 }
                 .padding()
             }
         }
-        .padding(CGFloat(Int(contentPadding)))
-        .padding(.horizontal, CGFloat(Int(horizontalPadding)))
-        .padding(.vertical, CGFloat(Int(verticalPadding)))
-        .padding()
-        .background(.white)
-        .navigationTitle(basicInfo.windowTitle)
-        
+    }
+    
+    /// 將 SwiftUI View 轉成 PDF，回傳檔案 URL
+    private func renderPDF() -> URL {
+        let renderer = ImageRenderer(content:
+                                        TableView(contentPadding: contentPadding, horizontalPadding: horizontalPadding, verticalPadding: verticalPadding, largeLayout: .constant(exportLargeLayout))
+            .background(canvaColor(for: colorScheme, pureBlack: pureBlack))
+        )
+
+        let url = URL.documentsDirectory.appending(path: basicInfo.title+".pdf")
+
+        renderer.render { size, context in
+            var box = CGRect(origin: .zero, size: size)
+
+            guard let pdf = CGContext(url as CFURL, mediaBox: &box, nil) else {
+                return
+            }
+
+            pdf.beginPDFPage(nil)
+            context(pdf)
+            pdf.endPDFPage()
+            pdf.closePDF()
+        }
+
+        return url
+    }
+    
+    func shareLinkHandler(_ exportType: ExportType) -> URL {
+        switch exportType {
+        case .png:
+            return pdfToImage(pdfURL: renderPDF(), targetSize: .init(width: size, height: size), outputURL: URL.documentsDirectory.appending(path: basicInfo.title+".png"))!
+        case .pdf:
+            return renderPDF()
+        }
     }
 }
 
+
+#Preview {
+    ContentView()
+    #if os(macOS)
+        .frame(width: 1000, height: 800)
+    #endif
+}
 
