@@ -7,10 +7,19 @@
 
 
 import PDFKit
+import UniformTypeIdentifiers
 
 enum ExportType: String, Hashable {
     case png
     case pdf
+    var contentType: UTType {
+        switch self {
+        case .png:
+            .png
+        case .pdf:
+            .pdf
+        }
+    }
 }
 
 /// 將 PDF (第一頁) 轉成 PNG 圖片

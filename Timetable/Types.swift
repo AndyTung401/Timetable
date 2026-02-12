@@ -43,19 +43,36 @@ extension Color {
 }
 #endif
 
-func canvaColor(for scheme: ColorScheme, pureBlack: Bool) -> Color {
-    if scheme == .light {
-        return Color(white: 1)
-    } else {
-        if pureBlack {
-            return Color(white: 0)
-        } else {
-            return Color(white: 0.1)
+
+enum UserTheme: Hashable {
+    case light
+    case dark
+    case black
+    var toColorScheme: ColorScheme {
+        switch self {
+        case .light: return .light
+        case .dark: return .dark
+        case .black: return .dark
+        }
+    }
+    var iconName: String {
+        switch self {
+        case .light: return "sun.max.fill"
+        case .dark: return "moon.stars.fill"
+        case .black: return "moon.fill"
+        }
+    }
+    var canvasColor: Color {
+        switch self {
+        case .light:
+            Color(white: 1)
+        case .dark:
+            Color(white: 0.1)
+        case .black:
+            Color(white: 0)
         }
     }
 }
-
-
 
 enum Category: String {
     case compulsory
@@ -94,7 +111,7 @@ struct BasicInfo {
 
 struct ClassData: Identifiable {
     var id = UUID()
-    var title, shortTitle, place, teacher: String
+    var title, systemImage, shortTitle, place, teacher: String
     var category: Category
 }
 

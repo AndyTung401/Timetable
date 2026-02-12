@@ -11,6 +11,7 @@ import SwiftUI
 
 struct CellView: View {
     @Binding var largeLayout: Bool
+    var showIcon: Bool
     var classData: ClassData
     var body: some View {
         if largeLayout {
@@ -19,13 +20,26 @@ struct CellView: View {
                     .foregroundStyle(classData.category.color)
                     .frame(width: 5, height: 50)
                 VStack(alignment: .leading) {
-                    Text(classData.shortTitle)
-                        .font(.system(size: 26))//.font(.largeTitle)
-                    #if os(macOS)
-                        .fontWeight(.semibold)
-                    #else
-                        .fontWeight(.bold)
-                    #endif
+                    if !showIcon || classData.systemImage.isEmpty {
+                        Text(classData.shortTitle)
+                            .labelIconToTitleSpacing(!showIcon || classData.systemImage.isEmpty ? 0 : 5)
+                            .font(.system(size: 26))//.font(.largeTitle)
+                            #if os(macOS)
+                            .fontWeight(.semibold)
+                            #else
+                            .fontWeight(.bold)
+                            #endif
+                    } else {
+                        Label(classData.shortTitle, systemImage: (showIcon ? classData.systemImage : ""))
+                            .labelIconToTitleSpacing(!showIcon || classData.systemImage.isEmpty ? 0 : 5)
+                            .font(.system(size: 26))//.font(.largeTitle)
+                            #if os(macOS)
+                            .fontWeight(.semibold)
+                            #else
+                            .fontWeight(.bold)
+                            #endif
+                    }
+                    
                     HStack (alignment: .lastTextBaseline, spacing: 0) {
                         Text(classData.teacher)
                             .font(.system(size: 15))//.font(.title3)
@@ -48,9 +62,17 @@ struct CellView: View {
                     .foregroundStyle(classData.category.color)
                     .frame(width: 5, height: 50)
                 VStack(alignment: .leading) {
-                    Text(classData.title)
-                        .font(.system(size: 15))//.font(.title3)
-                        .fontWeight(.bold)
+                    if !showIcon || classData.systemImage.isEmpty {
+                        Text(classData.title)
+                            .font(.system(size: 15))//.font(.title3)
+                            .fontWeight(.bold)
+                    } else {
+                        Label(classData.title, systemImage: (showIcon ? classData.systemImage : ""))
+                            .labelIconToTitleSpacing(3)
+                            .font(.system(size: 15))//.font(.title3)
+                            .fontWeight(.bold)
+                    }
+                        
                     Text(classData.teacher)
                         .font(.system(size: 12))//.font(.callout)
                         .foregroundStyle(.gray)
@@ -65,11 +87,9 @@ struct CellView: View {
 }
 
 struct TableView: View {
-    var contentPadding: Double
-    var horizontalPadding: Double
-    var verticalPadding: Double
-    var cellWidth: Double = 162
+    var cellWidth: Double = 150
     @Binding var largeLayout: Bool
+    var showIcon: Bool
     
     var body: some View {
         VStack {
@@ -105,6 +125,7 @@ struct TableView: View {
                         Text("三")
                         Text("四")
                         Text("五")
+                        Text("六")
                     }
                     .font(.system(size: 15))//.font(.title3)
                     .fontWeight(.bold)
@@ -149,9 +170,9 @@ struct TableView: View {
                             
                         }
                         
-                        ForEach(Array(classDatas[period.index ].indices), id: \.self) { i in
-                            if let data = classDatas[period.index][i] {
-                                CellView(largeLayout: $largeLayout, classData: data)
+                        ForEach(Array(classData[period.index].indices), id: \.self) { i in
+                            if let data = classData[period.index][i] {
+                                CellView(largeLayout: $largeLayout, showIcon: showIcon, classData: data)
                             } else {
                                 Spacer()
                             }
@@ -211,9 +232,6 @@ struct TableView: View {
                 .padding()
             }
         }
-        .padding(CGFloat(Int(contentPadding)))
-        .padding(.horizontal, CGFloat(Int(horizontalPadding)))
-        .padding(.vertical, CGFloat(Int(verticalPadding)))
         .padding()
         
     }
