@@ -9,7 +9,7 @@ import Foundation
 
 #if false
 
-let basicInfo: BasicInfo = BasicInfo(title: "國立台灣師範大學 114 學年度第 1 學期 上課時間表", topLeft: "", bottomLeft: "數學系 一年級", topRight: "學號：41440215S", bottomRight: "姓名：李宥嫺", credits: 30, windowTitle: "大一上課表")
+let basicInfo: BasicInfo = BasicInfo(title: "國立台灣師範大學 114 學年度第 2 學期 上課時間表", topLeft: "", bottomLeft: "數學系 一年級", topRight: "學號：41440215S", bottomRight: "姓名：李宥嫺", credits: 26, windowTitle: "大一下課表")
 
 let timePeriods: Array<TimePeriod> = [
     TimePeriod(index: 0, serial: "1", startTime: "08:10", endTime: "09:00"),
@@ -25,36 +25,40 @@ let timePeriods: Array<TimePeriod> = [
     TimePeriod(index: 10, serial: "A", startTime: "18:40", endTime: "19:30"),
     TimePeriod(index: 11, serial: "B", startTime: "19:35", endTime: "20:25"),
     TimePeriod(index: 12, serial: "C", startTime: "20:30", endTime: "21:20"),
+    TimePeriod(index: 13, serial: "D", startTime: "21:25", endTime: "22:15")
 ]
 
-let classDatas: Array<Array<ClassData?>> = [
+let classData: Array<Array<ClassData?>> = [
     [ // 1
-        ClassData(title: "中文閱讀與思辨", shortTitle: "中文閱讀思辨", place: "S301", teacher: "林津羽", category: .compulsory),
+        ClassData(title: "中文寫作與表達", systemImage: "", shortTitle: "國文", place: "S301", teacher: "林津羽", category: .compulsory),
         nil,
         nil,
         nil,
-        nil,
+        ClassData(title: "體育（羽球初級）", systemImage: "", shortTitle: "體育（羽球）", place: "中正堂", teacher: "鄭筱澐", category: .compulsory),
     ],
     [ // 2
-        ClassData(title: "中文閱讀與思辨", shortTitle: "中文閱讀思辨", place: "S301", teacher: "林津羽", category: .compulsory),
+        ClassData(title: "中文寫作與表達", systemImage: "", shortTitle: "國文", place: "S301", teacher: "林津羽", category: .compulsory),
         nil,
         nil,
-        ClassData(title: "微積分探索（一）", shortTitle: "微積分探索一", place: "S502", teacher: "林惠娥", category: .compulsory),
-        ClassData(title: "數學導論", shortTitle: "數學導論", place: "S503", teacher: "劉容真", category: .compulsory),
+        ClassData(title: "微積分探索（二）", systemImage: "", shortTitle: "微積分探索", place: "S502", teacher: "林惠娥", category: .compulsory),
+        ClassData(title: "體育（羽球初級）", systemImage: "", shortTitle: "體育（羽球）", place: "中正堂", teacher: "鄭筱澐", category: .compulsory),
+        ClassData(title: "國三七張家教", systemImage: "", shortTitle: "國三數學", place: "七張", teacher: "9. ~ 12.", category: .other),
     ],
     [ // 3
-        ClassData(title: "英文（一）", shortTitle: "英文（一）", place: "S302", teacher: "翁悅心", category: .compulsory),
-        ClassData(title: "線性代數（一）", shortTitle: "線性代數(一)", place: "E301", teacher: "謝世峰", category: .compulsory),
-        ClassData(title: "大學入門", shortTitle: "大學入門", place: "B103", teacher: "黃聰明 楊青育", category: .liberal),
-        ClassData(title: "微積分甲（一）", shortTitle: "微積分甲(一)", place: "S502", teacher: "林惠娥", category: .compulsory),
-        ClassData(title: "數學導論", shortTitle: "數學導論", place: "S503", teacher: "劉容真", category: .compulsory),
+        ClassData(title: "英文", systemImage: "", shortTitle: "英文", place: "S302", teacher: "翁悅心", category: .compulsory),
+        ClassData(title: "線性代數（二）", systemImage: "", shortTitle: "線性代數", place: "E301", teacher: "謝世峰", category: .compulsory),
+        nil,
+        ClassData(title: "微積分甲（二）", systemImage: "", shortTitle: "微積分", place: "S502", teacher: "林惠娥", category: .compulsory),
+        ClassData(title: "管理學入門", systemImage: "", shortTitle: "管理學", place: "S602", teacher: "詩友元", category: .liberal),
+        ClassData(title: "國三七張家教", systemImage: "", shortTitle: "國三數學", place: "七張", teacher: "9. ~ 12.", category: .other),
     ],
     [ // 4
-        ClassData(title: "英文（一）", shortTitle: "英文（一）", place: "S302", teacher: "翁悅心", category: .compulsory),
-        ClassData(title: "線性代數（一）", shortTitle: "線性代數(一)", place: "E301", teacher: "謝世峰", category: .compulsory),
-        ClassData(title: "大學入門", shortTitle: "大學入門", place: "B103", teacher: "黃聰明 楊青育", category: .liberal),
-        ClassData(title: "微積分甲（一）", shortTitle: "微積分甲(一)", place: "S502", teacher: "林惠娥", category: .compulsory),
-        ClassData(title: "數學導論", shortTitle: "數學導論", place: "S503", teacher: "劉容真", category: .compulsory),
+        ClassData(title: "英文", systemImage: "", shortTitle: "英文", place: "S302", teacher: "翁悅心", category: .compulsory),
+        ClassData(title: "線性代數（二）", systemImage: "", shortTitle: "線性代數", place: "E301", teacher: "謝世峰", category: .compulsory),
+        nil,
+        ClassData(title: "微積分甲（二）", systemImage: "", shortTitle: "微積分", place: "S502", teacher: "林惠娥", category: .compulsory),
+        ClassData(title: "管理學入門", systemImage: "", shortTitle: "管理學", place: "S602", teacher: "詩友元", category: .liberal),
+        ClassData(title: "國三七張家教", systemImage: "", shortTitle: "國三數學", place: "七張", teacher: "9. ~ 12.", category: .other),
     ],
     [ // 5
         nil,
@@ -64,61 +68,65 @@ let classDatas: Array<Array<ClassData?>> = [
         nil,
     ],
     [ // 6
-        ClassData(title: "電子計算機概論", shortTitle: "計算機概論", place: "S401", teacher: "楊青育", category: .elective),
-        ClassData(title: "微積分甲（一）", shortTitle: "微積分甲", place: "S502", teacher: "林惠娥", category: .compulsory),
-        ClassData(title: "線性代數（一）", shortTitle: "線性代數(一)", place: "E301", teacher: "謝世峰", category: .compulsory),
-        ClassData(title: "基礎物理", shortTitle: "基礎物理", place: "S202", teacher: "邱顯智", category: .compulsory),
-        ClassData(title: "基礎物理實驗", shortTitle: "基礎物理實驗", place: "D121", teacher: "陸亭樺", category: .compulsory),
+        nil,
+        ClassData(title: "微積分甲（二）", systemImage: "", shortTitle: "微積分", place: "S502", teacher: "林惠娥", category: .compulsory),
+        ClassData(title: "線性代數（二）", systemImage: "", shortTitle: "線性代數", place: "E301", teacher: "謝世峰", category: .compulsory),
+        ClassData(title: "程式設計", systemImage: "", shortTitle: "程式設計", place: "理圖807", teacher: "楊清玉", category: .compulsory),
+        ClassData(title: "數論", systemImage: "", shortTitle: "數論", place: "E102", teacher: "胡舉卿", category: .compulsory)
     ],
     [ // 7
-        ClassData(title: "電子計算機概論", shortTitle: "計算機概論", place: "S401", teacher: "楊青育", category: .elective),
-        ClassData(title: "微積分甲（一）", shortTitle: "微積分甲", place: "S502", teacher: "林惠娥", category: .compulsory),
-        ClassData(title: "線性代數探索（一）", shortTitle: "線代探索(一)", place: "E301", teacher: "謝世峰", category: .compulsory),
-        ClassData(title: "基礎物理", shortTitle: "基礎物理", place: "S202", teacher: "邱顯智", category: .compulsory),
-        ClassData(title: "基礎物理實驗", shortTitle: "基礎物理實驗", place: "D121", teacher: "陸亭樺", category: .compulsory),
+        nil,
+        ClassData(title: "微積分甲（二）", systemImage: "", shortTitle: "微積分", place: "S502", teacher: "林惠娥", category: .compulsory),
+        ClassData(title: "線性代數探索（二）", systemImage: "", shortTitle: "線性代數", place: "E301", teacher: "謝世峰", category: .compulsory),
+        ClassData(title: "程式設計", systemImage: "", shortTitle: "程式設計", place: "理圖807", teacher: "楊清玉", category: .compulsory),
+        ClassData(title: "數論", systemImage: "", shortTitle: "數論", place: "E102", teacher: "胡舉卿", category: .compulsory)
     ],
     [ // 8
-        ClassData(title: "電子計算機概論", shortTitle: "計算機概論", place: "S401", teacher: "楊青育", category: .elective),
         nil,
-        ClassData(title: "體育（飛盤運動）", shortTitle: "體育（飛盤）", place: "公館操場二", teacher: "黃正杰", category: .required),
-        ClassData(title: "基礎物理", shortTitle: "基礎物理", place: "S202", teacher: "邱顯智", category: .compulsory),
-        ClassData(title: "基礎物理實驗", shortTitle: "基礎物理實驗", place: "D121", teacher: "陸亭樺", category: .compulsory),
+        nil,
+        nil,
+        ClassData(title: "程式設計", systemImage: "", shortTitle: "程式設計", place: "理圖807", teacher: "楊清玉", category: .compulsory),
+        ClassData(title: "數論", systemImage: "", shortTitle: "數論", place: "E102", teacher: "胡舉卿", category: .compulsory)
     ],
     [ // 9
         nil,
-        ClassData(title: "運算思維與程式設計", shortTitle: "運算思維", place: "理圖801", teacher: "張凌倩", category: .liberal),
-        ClassData(title: "體育（飛盤運動）", shortTitle: "體育（飛盤）", place: "公館操場二", teacher: "黃正杰", category: .required),
+        nil,
+        ClassData(title: "經濟學", systemImage: "", shortTitle: "經濟學", place: "教201演講", teacher: "周有熙", category: .liberal),
         nil,
         nil,
     ],
     [ // 10
-        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
-        ClassData(title: "運算思維與程式設計", shortTitle: "運算思維", place: "理圖801", teacher: "張凌倩", category: .liberal),
-        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
         nil,
+        nil,
+        ClassData(title: "經濟學", systemImage: "", shortTitle: "經濟學", place: "教201演講", teacher: "周有熙", category: .liberal),
+        ClassData(title: "國三七張家教", systemImage: "", shortTitle: "國三數學", place: "七張", teacher: "💩 ~ 💩", category: .other),
         nil,
     ],
     [ // A
-        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
+        ClassData(title: "國一線上家教", systemImage: "", shortTitle: "國一數學", place: "線上", teacher: "18.5 ~ 20.", category: .other),
+        ClassData(title: "小一全科家教", systemImage: "", shortTitle: "小一全科", place: "松山", teacher: "18. ~ 20.", category: .other),
+        ClassData(title: "國一線上家教", systemImage: "", shortTitle: "國一數學", place: "線上", teacher: "18.5 ~ 20.", category: .other),
         nil,
-        ClassData(title: "家教", shortTitle: "家教", place: "19:00~20:30", teacher: "", category: .other),
-        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥亘", category: .liberal),
-        nil,
+        ClassData(title: "小一全科家教", systemImage: "", shortTitle: "小一全科", place: "松山", teacher: "18. ~ 20.", category: .other),
+        ClassData(title: "高一數學家教", systemImage: "", shortTitle: "高一數學", place: "內湖", teacher: "日 10. ~ 12.", category: .other)
     ],
     [ // B
+        ClassData(title: "科學思維", systemImage: "", shortTitle: "科學思維", place: "誠203", teacher: "鍾兆晉", category: .liberal),
+        ClassData(title: "小一全科家教", systemImage: "", shortTitle: "小一全科", place: "松山", teacher: "18. ~ 20.", category: .other),
         nil,
         nil,
-        nil,
-        ClassData(title: "現代公民與法律", shortTitle: "現代公民法律", place: "誠104", teacher: "陳彥亘", category: .liberal),
-        nil,
+        ClassData(title: "小一全科家教", systemImage: "", shortTitle: "小一全科", place: "松山", teacher: "18. ~ 20.", category: .other),
+        ClassData(title: "高一數學家教", systemImage: "", shortTitle: "高一數學", place: "內湖", teacher: "日 10. ~ 12.", category: .other)
     ],
     [ // C
+        ClassData(title: "科學思維", systemImage: "", shortTitle: "科學思維", place: "誠203", teacher: "鍾兆晉", category: .liberal),
         nil,
         nil,
         nil,
-        ClassData(title: "排球", shortTitle: "排球", place: "20:30~23:30", teacher: "", category: .other),
         nil,
+        ClassData(title: "高一數學家教", systemImage: "", shortTitle: "高一數學", place: "內湖", teacher: "日 10. ~ 12.", category: .other)
     ],
+    []
 ]
 
 #endif
