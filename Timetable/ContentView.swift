@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State var size: Double = 2500
     @State var largeLayout: Bool = false
+    @State var fillIcon: Bool = false
     @State var contentPadding: Double = 0
     @State var horizontalPadding: Double = 0
     @State var verticalPadding: Double = 0
@@ -100,6 +101,9 @@ struct ContentView: View {
                     
                     Label("Show Icon", systemImage: "character.circle.fill")
                     Toggle("", isOn: $showIcon)
+                    
+                    Label("Fill Icon", systemImage: "circle.fill")
+                    Toggle("", isOn: $fillIcon)
                 }
                 .toggleStyle(.switch)
                 
@@ -164,7 +168,7 @@ struct ContentView: View {
             }
         } detail: {
             ScrollView([.horizontal, .vertical]) {
-                TableView(largeLayout: $largeLayout, showIcon: showIcon)
+                TableView(largeLayout: $largeLayout, showIcon: showIcon, fillIcon: fillIcon)
                     .padding(effectivePadding)
                     .background(userTheme.canvasColor)
                     .navigationTitle(basicInfo.windowTitle)
@@ -186,7 +190,7 @@ struct ContentView: View {
     /// 將 SwiftUI View 轉成 PDF，回傳檔案 URL
     private func renderPDF() -> URL {
         let renderer = ImageRenderer(content:
-                                        TableView(largeLayout: .constant(largeLayout), showIcon: showIcon)
+                                        TableView(largeLayout: .constant(largeLayout), showIcon: showIcon, fillIcon: fillIcon)
             .padding(effectivePadding)
             .background(userTheme.canvasColor)
             .environment(\.colorScheme, userTheme.toColorScheme)

@@ -12,6 +12,7 @@ import SwiftUI
 struct CellView: View {
     @Binding var largeLayout: Bool
     var showIcon: Bool
+    var fillIcon: Bool
     var classData: ClassData
     var body: some View {
         if largeLayout {
@@ -31,6 +32,7 @@ struct CellView: View {
                             #endif
                     } else {
                         Label(classData.shortTitle, systemImage: (showIcon ? classData.systemImage : ""))
+                            .symbolVariant(fillIcon ? .fill : .none)
                             .labelIconToTitleSpacing(!showIcon || classData.systemImage.isEmpty ? 0 : 5)
                             .font(.system(size: 26))//.font(.largeTitle)
                             #if os(macOS)
@@ -68,6 +70,7 @@ struct CellView: View {
                             .fontWeight(.bold)
                     } else {
                         Label(classData.title, systemImage: (showIcon ? classData.systemImage : ""))
+                            .symbolVariant(fillIcon ? .fill : .none)
                             .labelIconToTitleSpacing(3)
                             .font(.system(size: 15))//.font(.title3)
                             .fontWeight(.bold)
@@ -87,9 +90,10 @@ struct CellView: View {
 }
 
 struct TableView: View {
-    var cellWidth: Double = 150
+    var cellWidth: Double = 165
     @Binding var largeLayout: Bool
     var showIcon: Bool
+    var fillIcon: Bool
     
     var body: some View {
         VStack {
@@ -125,9 +129,9 @@ struct TableView: View {
                         Text("三")
                         Text("四")
                         Text("五")
-                        Text("六")
+                        Text("日")
                     }
-                    .font(.system(size: 15))//.font(.title3)
+                    .font(.system(size: largeLayout ? 20 : 15))//.font(.title3)
                     .fontWeight(.bold)
                     .frame(width: cellWidth, alignment: .bottom)
                 } // 日期
@@ -172,7 +176,7 @@ struct TableView: View {
                         
                         ForEach(Array(classData[period.index].indices), id: \.self) { i in
                             if let data = classData[period.index][i] {
-                                CellView(largeLayout: $largeLayout, showIcon: showIcon, classData: data)
+                                CellView(largeLayout: $largeLayout, showIcon: showIcon, fillIcon: fillIcon, classData: data)
                             } else {
                                 Spacer()
                             }
