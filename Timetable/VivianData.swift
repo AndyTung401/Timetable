@@ -42,23 +42,23 @@ let classData: Array<Array<ClassData?>> = [
         nil,
         nil,
         nil,
-        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B 102", teacher: "郭君逸", category: .required),
+        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B102", teacher: "郭君逸", category: .required),
     ],
     [ // 3
         ClassData(title: "高等微積分", systemImage: "", shortTitle: "高等微積分", place: "E301", teacher: "林延輯", category: .required),
         ClassData(title: "代數學", systemImage: "", shortTitle: "代數學", place: "E301", teacher: "劉容真", category: .required),
         nil,
         ClassData(title: "代數學", systemImage: "", shortTitle: "代數學", place: "E301", teacher: "劉容真", category: .required),
-        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B 102", teacher: "郭君逸", category: .required),
-        ClassData(title: "高三數A", systemImage: "", shortTitle: "高三數A", place: "內湖", teacher: "10.5 ~ 12.5", category: .other),
+        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B102", teacher: "郭君逸", category: .required),
+        ClassData(title: "高二數A", systemImage: "", shortTitle: "高二數A", place: "內湖", teacher: "10.5 ~ 12.5", category: .other),
     ],
     [ // 4
-        ClassData(title: "高等微積分", systemImage: "", shortTitle: "高微", place: "E301", teacher: "林延輯", category: .required),
+        ClassData(title: "高等微積分", systemImage: "", shortTitle: "高等微積分", place: "E301", teacher: "林延輯", category: .required),
         ClassData(title: "代數學", systemImage: "", shortTitle: "代數學", place: "E301", teacher: "劉容真", category: .required),
         nil,
         ClassData(title: "代數學", systemImage: "", shortTitle: "代數學", place: "E301", teacher: "劉容真", category: .required),
-        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B 102", teacher: "郭君逸", category: .required),
-        ClassData(title: "高三數A", systemImage: "", shortTitle: "高三數A", place: "內湖", teacher: "10.5 ~ 12.5", category: .other),
+        ClassData(title: "離散數學", systemImage: "", shortTitle: "離散數學", place: "B102", teacher: "郭君逸", category: .required),
+        ClassData(title: "高二數A", systemImage: "", shortTitle: "高二數A", place: "內湖", teacher: "10.5 ~ 12.5", category: .other),
     ],
     [ // 5
         nil,
@@ -88,7 +88,11 @@ let classData: Array<Array<ClassData?>> = [
         ClassData(title: "高等微積分", systemImage: "", shortTitle: "高等微積分", place: "E301", teacher: "林延輯", category: .required),
     ],
     [ // 9
-        
+        nil,
+        nil,
+        nil,
+        nil,
+        ClassData(title: "小二家教", systemImage: "", shortTitle: "小二家教", place: "中山國中", teacher: "16. ~ 18.", category: .other)
     ],
     [ // 10
         nil,
