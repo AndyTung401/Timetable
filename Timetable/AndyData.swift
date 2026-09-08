@@ -64,11 +64,11 @@ let classData: Array<Array<ClassData?>> = [
         ClassData(title: "英語演說溝通技巧", systemImage: "person.bust", shortTitle: "英語演說", place: "博雅302", teacher: "柯凱彣", category: .elective),
     ],
     [ // 6
-        ClassData(title: "羽球初級", systemImage: "tennis.racket", shortTitle: "與球初級", place: "舊館羽球場", teacher: "黃欽永", category: .liberal),
+        ClassData(title: "羽球初級", systemImage: "tennis.racket", shortTitle: "羽球初級", place: "舊館羽球場", teacher: "黃欽永", category: .liberal),
         ClassData(title: "英語演說溝通技巧", systemImage: "person.bust", shortTitle: "英語演說", place: "博雅302", teacher: "柯凱彣", category: .elective),
     ],
     [ // 7
-        ClassData(title: "羽球初級", systemImage: "tennis.racket", shortTitle: "與球初級", place: "舊館羽球場", teacher: "黃欽永", category: .liberal),
+        ClassData(title: "羽球初級", systemImage: "tennis.racket", shortTitle: "羽球初級", place: "舊館羽球場", teacher: "黃欽永", category: .liberal),
         ClassData(title: "英語演說溝通技巧", systemImage: "person.bust", shortTitle: "英語演說", place: "博雅302", teacher: "柯凱彣", category: .elective),
         nil,
         ClassData(title: "電子學（一）", systemImage: "cpu", shortTitle: "電子學一", place: "電二143", teacher: "呂良鴻", category: .required),
