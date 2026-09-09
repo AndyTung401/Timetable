@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if true
+#if false
 
 let basicInfo: BasicInfo = BasicInfo(title: "0", topLeft: "", bottomLeft: "", topRight: "", bottomRight: "", credits: 0, windowTitle: "")
 

@@ -48,14 +48,14 @@ let classData: Array<Array<ClassData?>> = [
     [ // 3
         ClassData(title: "電磁學一", systemImage: "bolt.horizontal", shortTitle: "電磁學一", place: "電二229", teacher: "鄭宇翔", category: .required),
         nil,
-        ClassData(title: "工數—微分方程", systemImage: "function", shortTitle: "工數微分", place: "電二114", teacher: "黃定洧", category: .required),
+        ClassData(title: "工數—微分方程", systemImage: "function", shortTitle: "工數微分", place: "電二144", teacher: "黃定洧", category: .required),
         nil,
         ClassData(title: "工數—線性代數", systemImage: "graph.2d", shortTitle: "工數線代", place: "博理103", teacher: "馮世邁", category: .required),
     ],
     [ // 4
         ClassData(title: "電磁學一", systemImage: "bolt.horizontal", shortTitle: "電磁學一", place: "電二229", teacher: "鄭宇翔", category: .required),
         nil,
-        ClassData(title: "工數—微分方程", systemImage: "function", shortTitle: "工數微分", place: "電二114", teacher: "黃定洧", category: .required),
+        ClassData(title: "工數—微分方程", systemImage: "function", shortTitle: "工數微分", place: "電二144", teacher: "黃定洧", category: .required),
         nil,
         ClassData(title: "工數—線性代數", systemImage: "graph.2d", shortTitle: "工數線代", place: "博理103", teacher: "馮世邁", category: .required),
     ],

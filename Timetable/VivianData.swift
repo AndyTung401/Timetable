@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if false
+#if true
 
 
 let basicInfo: BasicInfo = BasicInfo(title: "國立台灣師範大學 115 學年度第 1 學期 上課時間表", topLeft: "", bottomLeft: "數學系 二年級", topRight: "學號：41440215S", bottomRight: "姓名：李宥嫺", credits: 30, windowTitle: "大二上課表")
@@ -35,10 +35,10 @@ let classData: Array<Array<ClassData?>> = [
         nil,
     ],
     [ // 1
-        nil,
+        ClassData(title: "體育（藤球初級）", systemImage: "", shortTitle: "藤球初級", place: "中正堂", teacher: "劉昶佑", category: .liberal),
     ],
     [ // 2
-        nil,
+        ClassData(title: "體育（藤球初級）", systemImage: "", shortTitle: "藤球初級", place: "中正堂", teacher: "劉昶佑", category: .liberal),
         nil,
         nil,
         nil,
@@ -99,17 +99,17 @@ let classData: Array<Array<ClassData?>> = [
         ClassData(title: "高一數學", systemImage: "", shortTitle: "高一數學", place: "七張", teacher: "17.5 ~ 20.", category: .other),
     ],
     [ // A
-        ClassData(title: "金融市場", systemImage: "banknote", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
+        ClassData(title: "金融市場", systemImage: "", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
         ClassData(title: "高一數學", systemImage: "", shortTitle: "高一數學", place: "七張", teacher: "17.5 ~ 20.", category: .other),
         ClassData(title: "國二數學", systemImage: "", shortTitle: "國二數學", place: "線上", teacher: "18.5 ~ 20.", category: .other),
         nil,
         ClassData(title: "國二數學", systemImage: "", shortTitle: "國二數學", place: "線上", teacher: "19. ~ 20.5", category: .other),
     ],
     [ // B
-        ClassData(title: "金融市場", systemImage: "banknote", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
+        ClassData(title: "金融市場", systemImage: "", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
     ],
     [ // C
-        ClassData(title: "金融市場", systemImage: "banknote", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
+        ClassData(title: "金融市場", systemImage: "", shortTitle: "金融市場", place: "綜210展覽", teacher: "楊智元", category: .liberal),
     ],
     [ // D
         nil,
